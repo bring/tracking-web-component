@@ -22,9 +22,8 @@
       },
       ready: function () {
         var self = this;
-        this.language = this.language || 'no';
         if(this.trackingNumber) {
-            this.url = this.searchUrl(this.trackingNumber, this.language || 'no');
+            this.url = this.searchUrl(this.trackingNumber, this.language);
         }
         this.$.ajax.addEventListener("polymer-response",
             function(e) {
@@ -48,7 +47,6 @@
               return this.texts[key][language];
           }
           return '';
-
       },
       texts: {
           'trackingNumberPlaceholder': {

@@ -11,7 +11,7 @@
         <h1 class="small">{{package.packageNumber}}</h1>
         <div id="status">
           <div class="error" hidden?="{{!error}}"></div>
-          <h3 class="small">{{error.message}}</h3>
+          <h3 class="small">{{language | i18n(error.code)}}</h3>
         </div>
         {{package.statusDescription || package.eventSet[0].description}}
       </div>
@@ -19,6 +19,34 @@
     <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}" language="{{language}}"></posten-tracking-search>
   </template>
   <script>
-    Polymer("posten-tracking", {});
+    Polymer("posten-tracking", {
+        ready: function() {
+            this.language = this.isLegalLanguage() ? this.language : 'no';
+        },
+        i18n: function(language, key) {
+            if(this.texts[key] && this.texts[key][language]) {
+                return this.texts[key][language];
+            }
+            return '';
+        },
+        isLegalLanguage: function() {
+            var legalLanguages = ['no', 'en', 'da', 'sv'];
+            return _.contains(legalLanguages, this.language);
+        },
+        texts: {
+            '404': {
+                no: 'Ingen sending funnet',
+                en: 'No shipments found',
+                da: 'Der blev ikke fundet nogen forsendelse',
+                sv: 'Ingen sändning hittades'
+            },
+            '500': {
+                no: 'Feil ved henting av sporingsinformasjon',
+                en: 'Error getting track & trace information',
+                da: 'Der opstod en fejl ved hentning af sporingsinformation',
+                sv: 'Fel vid hämtning av tracking-information'
+            }
+        }
+    });
   </script>
 </polymer-element>
