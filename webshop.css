@@ -1,0 +1,15 @@
+html {
+  font-family: "Arial";
+  padding: 2em;
+}
+
+
+th {
+  text-align: left;
+}
+
+th, td {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 5px 5px 0;
+  vertical-align: top;
+}
