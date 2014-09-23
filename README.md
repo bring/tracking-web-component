@@ -43,7 +43,7 @@ explicitly by using the ``language`` attribute:
 
     <posten-tracking language="en"></posten-tracking>
 
-Supported languages are Norwegian (no), Swedish (sv), Danish (da) and English
+Supported languages are Norwegian (no) and English
 (en). **The default is Norwegian (no)**.
 
 ### Override the styles

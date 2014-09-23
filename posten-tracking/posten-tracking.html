@@ -54,21 +54,17 @@
             return '';
         },
         isLegalLanguage: function() {
-            var legalLanguages = ['no', 'en', 'da', 'sv'];
+            var legalLanguages = ['no', 'en'];
             return _.contains(legalLanguages, this.language);
         },
         texts: {
             '404': {
                 no: 'Ingen sending funnet for',
-                en: 'No shipments found for',
-                da: 'Der blev ikke fundet nogen forsendelse for',
-                sv: 'Ingen sändning hittades för'
+                en: 'No shipments found for'
             },
             '500': {
                 no: 'Feil ved henting av sporingsinformasjon',
-                en: 'Error getting track & trace information',
-                da: 'Der opstod en fejl ved hentning af sporingsinformation',
-                sv: 'Fel vid hämtning av tracking-information'
+                en: 'Error getting track & trace information'
             },
             showAllEvents: {
               no: 'Vis alle hendelser',
