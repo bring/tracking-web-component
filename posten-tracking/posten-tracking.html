@@ -1,10 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../posten-tracking-search/posten-tracking-search.html">
 
-<polymer-element name="posten-tracking" attributes="trackingNumber" layout vertical>
+<polymer-element name="posten-tracking" attributes="trackingNumber language" layout vertical>
   <template>
     <link rel="stylesheet" href="posten-tracking.css">
-    <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}"></posten-tracking-search>
 
     <div layout horizontal center>
       <div class="package" hidden?={{!package}}></div>
@@ -17,7 +16,7 @@
         {{package.statusDescription || package.eventSet[0].description}}
       </div>
     </div>
-
+    <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}" language="{{language}}"></posten-tracking-search>
   </template>
   <script>
     Polymer("posten-tracking", {});

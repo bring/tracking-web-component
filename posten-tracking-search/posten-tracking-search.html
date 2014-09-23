@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 
-<polymer-element name="posten-tracking-search" attributes="trackingNumber package error" layout vertical>
+<polymer-element name="posten-tracking-search" attributes="trackingNumber package language error" layout vertical>
   <template>
 
     <polymer-jsonp id="ajax" auto url="{{url}}"></polymer-jsonp>
@@ -23,7 +23,7 @@
       ready: function () {
         var self = this;
         if(this.trackingNumber) {
-            this.url = this.searchUrl(this.trackingNumber);
+            this.url = this.searchUrl(this.trackingNumber, this.language || 'no');
         }
         this.$.ajax.addEventListener("polymer-response",
             function(e) {
@@ -39,8 +39,8 @@
             }
         );
       },
-      searchUrl: function(trackingNumber) {
-          return 'http://sporing.bring.no/sporing.json?q=' + trackingNumber + "&callback=";
+      searchUrl: function(trackingNumber, langCode) {
+          return 'http://sporing.bring.no/sporing.json?q=' + trackingNumber + '&lang=' + langCode + '&callback=';
       }
 
     });
