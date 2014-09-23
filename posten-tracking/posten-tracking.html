@@ -26,7 +26,7 @@
         <paper-button id="show-all-button" label="{{language | i18n(showAllButtonTextKey)}}" on-tap="{{showAllEvents}}"></paper-button>
         <ul id="events" class="{{ {expanded: expanded} | tokenList}}">
           <template repeat="{{event in package.eventSet}}">
-            <li>{{event.displayTime}} {{event.displayDate}} <html-echo html="{{event.description}}"></html-echo></li>
+            <li>{{event.displayDate}} - {{event.displayTime}} <br/> <html-echo html="{{event.description}}"></html-echo></li>
           </template>
         </ul>
       </div>
