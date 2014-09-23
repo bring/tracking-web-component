@@ -35,13 +35,19 @@ p.hvaskjera {
 #events {
     list-style-type: none;
     padding: 0;
-    height: 20px;
-    overflow-y: hidden;
     margin-top: 0;
 }
 
-#events.expanded {
-    height: auto;
+#events li {
+    display: none;
+}
+
+#events li:nth-child(2) {
+    display: block;
+}
+
+#events.expanded li {
+    display: block;
 }
 
 li {
