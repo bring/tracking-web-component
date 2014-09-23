@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../posten-tracking-search/posten-tracking-search.html">
+<link rel="import" href="../html-echo.html">
 
 <polymer-element name="posten-tracking" attributes="trackingNumber language" layout vertical>
   <template>
@@ -13,7 +14,11 @@
           <div class="error" hidden?="{{!error}}"></div>
           <h3 class="small">{{language | i18n(error.code)}}</h3>
         </div>
-        {{package.statusDescription || package.eventSet[0].description}}
+        <ul id="events">
+          <template repeat="{{event in package.eventSet}}">
+            <li>{{event.displayTime}} {{event.displayDate}} <html-echo html="{{event.description}}"></html-echo></li>
+          </template>
+        </ul>
       </div>
     </div>
     <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}" language="{{language}}"></posten-tracking-search>
