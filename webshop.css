@@ -14,7 +14,7 @@ th {
 
 th, td {
   border-bottom: 1px solid #ccc;
-  padding: 10px 10px 10px 0;
+  padding: 10px 20px 10px 0;
   vertical-align: top;
 }
 
@@ -29,6 +29,10 @@ posten-tracking /deep/ h1.small {
   font-size: 1.1em;
   color: red;
   margin-bottom: 0;
+}
+
+posten-tracking /deep/ h1.small:before {
+   content: "Sendingsnummer: ";
 }
 
 ul {
