@@ -71,3 +71,17 @@ li:nth-child(odd) {
         /*display: none;*/
     /*}*/
 /*}*/
+
+double-bounce::shadow .spinner {
+    height: 30px;
+    width: 30px;
+    margin: 10px auto;
+}
+
+@media screen and (min-width: 600px) {
+    double-bounce::shadow .spinner {
+        height: 30px;
+        width: 30px;
+        margin: 10px;
+    }
+}

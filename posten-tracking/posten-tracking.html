@@ -1,6 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/double-bounce/double-bounce.html">
 <link rel="import" href="../posten-tracking-search/posten-tracking-search.html">
+
 <link rel="import" href="../html-echo.html">
 <script src="../bower_components/underscore/underscore.js"></script>
 
@@ -8,14 +10,15 @@
   <template>
     <link rel="stylesheet" href="posten-tracking.css">
 
+    <double-bounce hidden?="{{package || error || !trackingNumber}}"></double-bounce>
     <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}" language="{{language}}"></posten-tracking-search>
 
     <div layout horizontal>
       <div class="package" hidden?={{!package}}></div>
-      <div flex>
+      <div flex hidden?={{!package}}>
         <h1 id="package-number" class="small">{{package.packageNumber}}</h1>
         <p class="hvaskjera"><html-echo html="{{package.statusDescription}}"></html-echo></p>
-        <div id="status">
+        <div id="status" >
           <div class="error" hidden?="{{!error}}">
               <p>{{language | i18n(error.code)}} <strong>{{trackingNumber}}</strong></p>
           </div>
