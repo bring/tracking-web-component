@@ -22,7 +22,7 @@
       </div>
       <div flex hidden?="{{!package}}">
         <h1 id="package-number" class="small">{{package.packageNumber}}</h1>
-        <p class="hvaskjera"><html-echo html="{{package.statusDescription}}"></html-echo></p>
+        <p class="hvaskjera" hidden?="{{!package.statusDescription}}"><html-echo html="{{package.statusDescription}}"></html-echo></p>
         <paper-button id="show-all-button" label="{{language | i18n(showAllButtonTextKey)}}" on-tap="{{showAllEvents}}"></paper-button>
         <ul id="events" class="{{ {expanded: expanded} | tokenList}}">
           <template repeat="{{event in package.eventSet}}">
