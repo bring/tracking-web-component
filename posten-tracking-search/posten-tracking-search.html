@@ -2,12 +2,12 @@
 <link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 
-<polymer-element name="posten-tracking-search" attributes="trackingNumber package" layout vertical>
+<polymer-element name="posten-tracking-search" attributes="trackingNumber package error" layout vertical>
   <template>
 
     <polymer-jsonp id="ajax" auto url="{{url}}"></polymer-jsonp>
 
-    <paper-input label="Sporingsnummer" hidden?="{{trackingNumber}}" on-keypress="{{search}}"></paper-input>
+    <paper-input label="Sporingsnummer" hidden?="{{ trackingNumber && !error }}" on-keypress="{{search}}"></paper-input>
 
   </template>
   <script>
@@ -27,7 +27,15 @@
         }
         this.$.ajax.addEventListener("polymer-response",
             function(e) {
-              self.package = e.detail.response.consignmentSet[0].packageSet[0];
+                self.error = false;
+
+                var response = e.detail.response.consignmentSet[0];
+                if(!response.error) {
+                    self.package = response.packageSet[0];
+                }
+                else {
+                    self.error = response.error;
+                }
             }
         );
       },
