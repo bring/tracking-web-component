@@ -17,6 +17,7 @@ h1.small {
 
 p.hvaskjera {
   font-weight: bold;
+    margin-left: 5px;
 }
 
 .package {
@@ -52,4 +53,8 @@ li:nth-child(odd) {
 
 #package-number {
     margin-left: 5px;
+}
+
+#show-all-button {
+    margin-left: -2px;
 }
