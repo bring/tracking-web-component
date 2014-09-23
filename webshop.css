@@ -18,3 +18,7 @@ posten-tracking {
   padding: 0;
   box-shadow: none;
 }
+
+posten-tracking /deep/ h1.small {
+  color: red;
+}
