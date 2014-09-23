@@ -35,6 +35,7 @@ p.hvaskjera {
     padding: 0;
     height: 20px;
     overflow-y: hidden;
+    margin-top: 0;
 }
 
 #events.expanded {
@@ -42,5 +43,13 @@ p.hvaskjera {
 }
 
 li {
-    padding-bottom: 5px;
+    padding: 5px;
+}
+
+li:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+#package-number {
+    margin-left: 5px;
 }
