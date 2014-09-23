@@ -7,7 +7,7 @@
 
     <polymer-jsonp id="ajax" auto url="{{url}}"></polymer-jsonp>
 
-    <paper-input label="Sporingsnummer" hidden?="{{ trackingNumber && !error }}" on-keypress="{{search}}"></paper-input>
+    <paper-input label="{{language | i18n('trackingNumberPlaceholder')}}" hidden?="{{ trackingNumber && !error }}" on-keypress="{{search}}"></paper-input>
 
   </template>
   <script>
@@ -22,6 +22,7 @@
       },
       ready: function () {
         var self = this;
+        this.language = this.language || 'no';
         if(this.trackingNumber) {
             this.url = this.searchUrl(this.trackingNumber, this.language || 'no');
         }
@@ -41,8 +42,22 @@
       },
       searchUrl: function(trackingNumber, langCode) {
           return 'http://sporing.bring.no/sporing.json?q=' + trackingNumber + '&lang=' + langCode + '&callback=';
-      }
+      },
+      i18n: function(language, key) {
+          if(this.texts[key] && this.texts[key][language]) {
+              return this.texts[key][language];
+          }
+          return '';
 
+      },
+      texts: {
+          'trackingNumberPlaceholder': {
+              no: 'Sporingsnummer',
+              en: 'Tracking number',
+              sv: 'Spårningsnummer',
+              da: 'Sporingsnummer'
+          }
+      }
     });
   </script>
 </polymer-element>
