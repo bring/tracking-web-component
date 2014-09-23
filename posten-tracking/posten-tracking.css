@@ -1,0 +1,17 @@
+:host {
+    position: relative;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+    padding: 0 10px 10px 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+h1.small {
+    font-size: 1.2rem;
+    color: #999;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
