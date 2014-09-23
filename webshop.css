@@ -3,6 +3,10 @@ html {
   padding: 2em;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
 th {
   text-align: left;
