@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<polymer-element name="posten-tracking-search" attributes="trackingNumber package" layout vertical>
+  <template>
+
+    <polymer-jsonp id="ajax" auto url="{{url}}"></polymer-jsonp>
+
+    <paper-input label="Sporingsnummer" hidden?="{{trackingNumber}}" on-keypress="{{search}}"></paper-input>
+
+  </template>
+  <script>
+    Polymer("posten-tracking-search", {
+      search: function(ev, detail, sender) {
+          var code = ev.keyCode || ev.charCode;
+          var key = ev.keyIdentifier;
+          if ((key === 'Enter' || code === 13)) {
+              this.trackingNumber = sender.inputValue;
+              this.url = this.searchUrl(this.trackingNumber);
+          }
+      },
+      ready: function () {
+        var self = this;
+        if(this.trackingNumber) {
+            this.url = this.searchUrl(this.trackingNumber);
+        }
+        this.$.ajax.addEventListener("polymer-response",
+            function(e) {
+              self.package = e.detail.response.consignmentSet[0].packageSet[0];
+            }
+        );
+      },
+      searchUrl: function(trackingNumber) {
+          return 'http://sporing.bring.no/sporing.json?q=' + trackingNumber + "&callback=";
+      }
+
+    });
+  </script>
+</polymer-element>

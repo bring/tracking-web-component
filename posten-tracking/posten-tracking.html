@@ -1,26 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="../posten-tracking-search/posten-tracking-search.html">
 
 <polymer-element name="posten-tracking" attributes="trackingNumber" layout vertical>
   <template>
     <link rel="stylesheet" href="posten-tracking.css">
-    <polymer-jsonp id="ajax" auto url="{{url}}"></polymer-jsonp>
+    <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}"></posten-tracking-search>
 
     <h1 class="small">{{package.packageNumber}}</h1>
-    <div id="status">Status</div>
+    <div id="status">
+        {{package.statusDescription}}
+    </div>
   </template>
   <script>
-    Polymer("posten-tracking", {
-      ready: function () {
-        var self = this;
-        this.url = 'http://sporing.bring.no/sporing.json?q=' + this.trackingNumber + "&callback=";
-        this.$.ajax.addEventListener("polymer-response",
-            function(e) {
-              self.package = e.detail.response.consignmentSet[0].packageSet[0];
-              self.$.status.innerHTML = self.package.statusDescription;
-            }
-        );
-      }
-    });
+    Polymer("posten-tracking", {});
   </script>
 </polymer-element>
