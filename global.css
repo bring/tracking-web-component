@@ -6,14 +6,10 @@ html,body {
     font-size: 0.9rem;
     color: #444;
 }
-body {
+.app {
     padding: 20px;
 }
 body h1 {
     font-size: 1.4rem;
     color: #666;
-}
-
-posten-tracking {
-    width: 50%;
 }
