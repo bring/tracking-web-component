@@ -9,7 +9,7 @@
         <div class="error" hidden?="{{!error}}">
             <h3 class="small">{{error.message}}</h3>
         </div>
-        {{package.statusDescription}}
+        {{package.statusDescription || package.eventSet[0].description}}
     </div>
     <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}"></posten-tracking-search>
   </template>
