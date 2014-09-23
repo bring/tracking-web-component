@@ -4,14 +4,20 @@
 <polymer-element name="posten-tracking" attributes="trackingNumber" layout vertical>
   <template>
     <link rel="stylesheet" href="posten-tracking.css">
-    <h1 class="small">{{package.packageNumber}}</h1>
-    <div id="status">
-        <div class="error" hidden?="{{!error}}">
-            <h3 class="small">{{error.message}}</h3>
+    <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}"></posten-tracking-search>
+
+    <div layout horizontal center>
+      <div class="package" hidden?={{!package}}></div>
+      <div>
+        <h1 class="small">{{package.packageNumber}}</h1>
+        <div id="status">
+          <div class="error" hidden?="{{!error}}"></div>
+          <h3 class="small">{{error.message}}</h3>
         </div>
         {{package.statusDescription || package.eventSet[0].description}}
+      </div>
     </div>
-    <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}"></posten-tracking-search>
+
   </template>
   <script>
     Polymer("posten-tracking", {});
