@@ -4,8 +4,8 @@
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-    padding: 10px 10px 10px 10px;
     background-color: rgb(255, 255, 255);
+    padding-left: 10px;
 }
 
 h1.small {
@@ -26,9 +26,15 @@ h1.small {
     vertical-align: top;
 }
 
-ul {
+#events {
     list-style-type: none;
     padding: 0;
+    height: 20px;
+    overflow-y: hidden;
+}
+
+#events.expanded {
+    height: auto;
 }
 
 li {

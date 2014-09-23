@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../posten-tracking-search/posten-tracking-search.html">
 <link rel="import" href="../html-echo.html">
 
@@ -7,7 +8,8 @@
     <link rel="stylesheet" href="posten-tracking.css">
 
     <posten-tracking-search trackingNumber="{{trackingNumber}}" package="{{package}}" error="{{error}}" language="{{language}}"></posten-tracking-search>
-    <div layout horizontal top>
+
+    <div layout horizontal>
       <div class="package" hidden?={{!package}}></div>
       <div>
         <h1 class="small">{{package.packageNumber}}</h1>
@@ -16,7 +18,8 @@
               <p>{{language | i18n(error.code)}} <strong>{{trackingNumber}}</strong></p>
           </div>
         </div>
-        <ul id="events">
+        <paper-button hidden?={{!package}} label="Vis alle" on-tap="{{showAllEvents}}"></paper-button>
+        <ul id="events" class="{{ {expanded: expanded} | tokenList}}">
           <template repeat="{{event in package.eventSet}}">
             <li>{{event.displayTime}} {{event.displayDate}} <html-echo html="{{event.description}}"></html-echo></li>
           </template>
@@ -26,6 +29,9 @@
   </template>
   <script>
     Polymer("posten-tracking", {
+        showAllEvents: function (ev, detail, sender) {
+            this.expanded = true;
+        },
         ready: function() {
             this.language = this.isLegalLanguage() ? this.language : 'no';
         },

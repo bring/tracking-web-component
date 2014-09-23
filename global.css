@@ -6,6 +6,9 @@ html,body {
     font-size: 0.9rem;
     color: #444;
 }
+body {
+    padding-bottom: 50px;
+}
 .app {
     padding: 20px;
 }
