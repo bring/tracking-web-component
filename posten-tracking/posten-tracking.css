@@ -15,6 +15,10 @@ h1.small {
     margin-bottom: 5px;
 }
 
+p.hvaskjera {
+  font-weight: bold;
+}
+
 .package {
     width: 60px;
     height: 60px;

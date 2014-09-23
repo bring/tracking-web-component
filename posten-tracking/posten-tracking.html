@@ -13,6 +13,7 @@
       <div class="package" hidden?={{!package}}></div>
       <div>
         <h1 class="small">{{package.packageNumber}}</h1>
+        <p class="hvaskjera"><html-echo html="{{package.statusDescription}}"></html-echo></p>
         <div id="status">
           <div class="error" hidden?="{{!error}}">
               <p>{{language | i18n(error.code)}} <strong>{{trackingNumber}}</strong></p>
