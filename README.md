@@ -9,7 +9,7 @@ results in your web project. It supports IE10+ and all other modern browsers.
 
 You can install this component in your web app through [Bower](http://www.bower.io):
 
-    bower install --save https://github.com/bring/tracking-web-component.git#master
+    bower install --save https://github.com/bring/tracking-web-component.git#1.0.0
 
 In the website, include the following lines of code in your head tag:
 
