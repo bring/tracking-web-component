@@ -15,7 +15,7 @@ In the website, include the following lines of code in your head tag:
 
     <script src="bower_components/platform/platform.js"></script>
 
-    <link rel="import" href="bower_components/posten-tracking/posten-tracking.html">
+    <link rel="import" href="bower_components/tracking-web-component/posten-tracking.html">
 
 ## Usage
 
